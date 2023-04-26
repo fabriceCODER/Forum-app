@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+          <div class="top-bar">
+              <h1>
+                  My Forum
+              </h1>
+          </div>
+          <div class="main">
+              <ol>
+              </ol>
+          </div>
+          <script src="app.js"></script>
+          <script>
+              console.log(threads);
+              let container = document.querySelector('ol');
+              for (let thread of threads) {
+                  let html = `
+                  <li class="row">
+                      <a href="/thread.html?${thread.id}">
+                          <h4 class="title">
+                              ${thread.title}
+                          </h4>
+                          <div class="bottom">
+                              <p class="timestamp">
+                                  ${new Date(thread.date).toLocaleString()}
+                              </p>
+                              <p class="comment-count">
+                                  ${thread.comments.length} comments
+                              </p>
+                          </div>
+                      </a>
+                  </li>
+                  `
+                  container.insertAdjacentHTML('beforeend', html);
+              }
+          </script>
+</body>
+</html>
